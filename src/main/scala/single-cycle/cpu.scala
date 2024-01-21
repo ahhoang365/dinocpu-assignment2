@@ -63,6 +63,7 @@ object SingleCycleCPUInfo {
       "alu",
       "immGen",
       "jumpDetection",
+      "jumpPcGen"
     )
   }
 }
