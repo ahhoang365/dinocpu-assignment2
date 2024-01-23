@@ -25,10 +25,10 @@ import chisel3.util.{BitPat, ListLookup}
  *                                   . 0 for none of the below
  *                                   . 1 for Load
  *                                   . 2 for Store
- * Output: op1_src               Specifying the source of operand1 of ALU/ControlTransferUnit
+ * Output: op1_src               Specifying the source of operand1 of ALU/JumpDetectionUnit
  *                                   . 0 if source is register file's readdata1
  *                                   . 1 if source is pc
- * Output: op2_src               Specifying the source of operand2 of ALU/ControlTransferUnit
+ * Output: op2_src               Specifying the source of operand2 of ALU/JumpDetectionUnit
  *                                   . 0 if source is register file's readdata2
  *                                   . 1 if source is immediate
  *                                   . 2 if source is a hardwired value 4
