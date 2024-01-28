@@ -40,4 +40,93 @@ class JumpDetectionUnit extends Module {
   io.taken := false.B
 
   // Your code goes here
+
+
+     
+
+  when(io.jumpop === 1.U ){
+     io.pc_plus_offset := false.B
+     io.op1_plus_offset := true.B
+     io.taken := true.B
+  }
+  .elsewhen(io.jumpop === 2.U){
+     io.pc_plus_offset := false.B
+     io.op1_plus_offset := true.B
+     io.taken := true.B
+  }
+  .elsewhen(io.jumpop === 3.U){
+
+     when((io.funct3 === "b000".U) & (io.operand1 === io.operand2)){
+        io.pc_plus_offset := false.B
+        io.op1_plus_offset := true.B
+        io.taken := true.B
+     }
+     .elsewhen((io.funct3 === "b000".U) & (io.operand1 =/= io.operand2)){
+        io.pc_plus_offset := true.B
+        io.op1_plus_offset := false.B
+        io.taken := false.B
+       
+     }
+     .elsewhen((io.funct3 === "b001".U) & (io.operand1 =/= io.operand2)){
+        io.pc_plus_offset:=false.B
+        io.op1_plus_offset := true.B
+        io.taken := true.B
+     }
+     
+     .elsewhen((io.funct3 === "b001".U)& (io.operand1 === io.operand2)){
+        io.pc_plus_offset := true.B
+        io.op1_plus_offset := false.B
+        io.taken := false.B
+
+     }
+
+     .elsewhen((io.funct3 === "b100".U) & (io.operand1 < io.operand2)){
+        io.pc_plus_offset := false.B
+        io.op1_plus_offset := true.B
+        io.taken := true.B
+     }
+     .elsewhen((io.funct3 === "b100".U) & (io.operand1 >= io.operand2)){
+        io.pc_plus_offset := false.B
+        io.op1_plus_offset := true.B
+        io.taken := true.B
+     }
+
+     .elsewhen((io.funct3 === "b101".U) & (io.operand1 >= io.operand2)){
+        io.pc_plus_offset := false.B
+        io.op1_plus_offset := true.B
+        io.taken := true.B
+     }
+     .elsewhen((io.funct3 === "b101".U) & (io.operand1 < io.operand2)){
+        io.pc_plus_offset := true.B
+        io.op1_plus_offset := false.B
+        io.taken := false.B
+     }
+
+
+     .elsewhen((io.funct3 === "b110".U) & (io.operand1.asUInt() < io.operand2.asUInt())){
+        io.pc_plus_offset := false.B
+        io.op1_plus_offset := true.B
+        io.taken := true.B
+     }
+     .elsewhen((io.funct3 === "b110".U) & (io.operand1.asUInt() >= io.operand2.asUInt())){
+        io.pc_plus_offset := true.B
+        io.op1_plus_offset := false.B
+        io.taken := false.B
+     }
+
+     .elsewhen((io.funct3 === "b111".U) & (io.operand1.asUInt() >= io.operand2.asUInt())){
+        io.pc_plus_offset := false.B
+        io.op1_plus_offset := true.B
+        io.taken := true.B
+     }
+     .elsewhen((io.funct3 === "b111".U) & (io.operand1.asUInt() < io.operand2.asUInt())){
+        io.pc_plus_offset := true.B
+        io.op1_plus_offset := false.B
+        io.taken := false.B
+     }
+
+
+  }
+
+
 }
